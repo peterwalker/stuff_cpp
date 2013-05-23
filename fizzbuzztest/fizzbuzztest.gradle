@@ -1,0 +1,3 @@
+apply plugin: "cpp-exe"
+
+task build (dependsOn: [mainExecutable])
