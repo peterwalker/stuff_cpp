@@ -27,6 +27,7 @@ project(":fizzbuzztest") {
 	task runTest(type:Exec, dependsOn: installMainExecutable) {
 		workingDir "$buildDir/install/mainExecutable/lib"
 		commandLine "./$project.name"
+		environment LD_LIBRARY_PATH: "."
 	}
 	task build (dependsOn: runTest)
 
