@@ -1,3 +1,0 @@
-apply plugin: "cpp-lib"
-
-task build (dependsOn: [mainSharedLibrary])
