@@ -24,7 +24,8 @@ project(":fizzbuzztest") {
 			}
 		}
 	}
-	task build (dependsOn: [mainExecutable])
+	task build (dependsOn: [installMainExecutable])
+	//**TODO - run test as part of "build
 }
 
 evaluationDependsOnChildren()
