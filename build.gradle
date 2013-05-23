@@ -1,9 +1,12 @@
 apply from: "$rootDir/gradle/wrapper.gradle"
 
+subprojects{
+	apply plugin: "eclipse-cdt"
+}
+
 evaluationDependsOnChildren()
 
 task clean (dependsOn: getTasksByName('clean', true))
 task build (dependsOn: getTasksByName('build', true))
 build.mustRunAfter clean
 task cleanAndBuild(dependsOn: [clean,build])
-
