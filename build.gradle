@@ -4,9 +4,32 @@ subprojects{
 	apply plugin: "eclipse-cdt"
 }
 
-evaluationDependsOnChildren()
+project(":cppunit") {
+	apply plugin: "cpp-lib"
+	task build (dependsOn: [mainSharedLibrary])
+}
 
+project(":fizzbuzz") {
+	apply plugin: "cpp-lib"
+	task build (dependsOn: [mainSharedLibrary])
+}
+
+project(":fizzbuzztest") {
+	apply plugin: "cpp-exe"
+	cpp {
+		sourceSets {
+			main {
+				libs << project(":fizzbuzz").libraries.main
+				libs << project(":cppunit").libraries.main
+			}
+		}
+	}
+	task build (dependsOn: [mainExecutable])
+}
+
+evaluationDependsOnChildren()
 task clean (dependsOn: getTasksByName('clean', true))
 task build (dependsOn: getTasksByName('build', true))
 build.mustRunAfter clean
 task cleanAndBuild(dependsOn: [clean,build])
+apply plugin: "eclipse"

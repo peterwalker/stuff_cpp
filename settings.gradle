@@ -1,4 +1,5 @@
 //include 'array-intersection'
+include 'cppunit'
 //include 'battleships'
 //include 'binary-search'
 //include 'count-bits'
@@ -9,13 +10,3 @@ include 'fizzbuzztest'
 //include 'fibonacci'
 //include 'palindrome'
 //include 'quicksort'
-
-rootProject.name = 'stuff_cpp'
-
-rootProject.children.each { project ->
-    String fileBaseName = project.name.replaceAll("\\p{Upper}") { "-${it.toLowerCase()}" }
-    String projectDirName = "$fileBaseName"
-    project.projectDir = new File(settingsDir, projectDirName)
-    project.buildFileName = "${fileBaseName}.gradle"
-    assert project.projectDir.isDirectory()
-}
