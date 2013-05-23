@@ -20,7 +20,5 @@ FizzBuzzTest::tearDown()
 void 
 FizzBuzzTest::testFizzBuzz()
 {
-
-  //CPPUNIT_ASSERT_EQUAL( longNumber, money.getAmount() );
-
+	CPPUNIT_ASSERT_EQUAL( 0, 0 );
 }

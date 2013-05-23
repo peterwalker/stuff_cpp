@@ -24,8 +24,12 @@ project(":fizzbuzztest") {
 			}
 		}
 	}
-	task build (dependsOn: [installMainExecutable])
-	//**TODO - run test as part of "build
+	task runTest(type:Exec, dependsOn: installMainExecutable) {
+		workingDir "$buildDir/install/mainExecutable/lib"
+		commandLine "./$project.name"
+	}
+	task build (dependsOn: runTest)
+
 }
 
 evaluationDependsOnChildren()
