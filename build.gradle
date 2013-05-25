@@ -30,7 +30,6 @@ project(":fizzbuzztest") {
 		environment LD_LIBRARY_PATH: "."
 	}
 	task build (dependsOn: runTest)
-
 }
 
 evaluationDependsOnChildren()

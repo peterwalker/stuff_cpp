@@ -15,7 +15,7 @@ FizzBuzz::~FizzBuzz() {
 	// TODO Auto-generated destructor stub
 }
 
-std::string FizzBuzz::check(int value) const {
+std::string FizzBuzz::check(int value) {
 	if (value%5 && value %3) return "FizzBuzz";
 	if (value%5) return "Fizz";
 	if (value%3) return "Buzz";

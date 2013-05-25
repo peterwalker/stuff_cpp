@@ -3,22 +3,14 @@
 
 // Registers the fixture into the 'registry'
 CPPUNIT_TEST_SUITE_REGISTRATION( FizzBuzzTest );
-
-
-void 
-FizzBuzzTest::setUp()
+FizzBuzzTest:: FizzBuzzTest()
 {
-}
-
-
-void 
-FizzBuzzTest::tearDown()
-{
+	fb = std::auto_ptr<FizzBuzz>(new FizzBuzz());
 }
 
 
 void 
 FizzBuzzTest::testFizzBuzz()
 {
-	CPPUNIT_ASSERT_EQUAL( 0, 0 );
+	CPPUNIT_ASSERT_EQUAL( fb->check(15), std::string("FizzBuzz"));
 }
