@@ -11,8 +11,6 @@
 
 class FizzBuzz {
 public:
-	FizzBuzz();
-	virtual ~FizzBuzz();
 	std::string check(int value);
 };
 
