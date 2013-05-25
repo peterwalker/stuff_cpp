@@ -9,7 +9,6 @@ PalindromeTest:: PalindromeTest()
 	sut = std::auto_ptr<Palindrome>(new Palindrome());
 }
 
-
 void 
 PalindromeTest::testPalindrome()
 {
