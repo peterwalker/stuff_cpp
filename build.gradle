@@ -10,52 +10,32 @@ project(":cppunit") {
 	task build (dependsOn: [mainSharedLibrary])
 }
 
-project(":fizzbuzz") {
-	apply plugin: "cpp-lib"
-	task build (dependsOn: [mainSharedLibrary])
-}
+configureProjectSet("fizzbuzz")
+configureProjectSet("palindrome")
 
-project(":fizzbuzztest") {
-	apply plugin: "cpp-exe"
-	cpp {
-		sourceSets {
-			main {
-				libs << project(":fizzbuzz").libraries.main
-				libs << project(":cppunit").libraries.main
+def configureProjectSet(name){
+	project(":$name") {
+		apply plugin: "cpp-lib"
+		task build (dependsOn: [mainSharedLibrary])
+	}
+	project(":${name}test") {
+		apply plugin: "cpp-exe"
+		cpp {
+			sourceSets {
+				main {
+					libs << project(":$name").libraries.main
+					libs << project(":cppunit").libraries.main
+				}
 			}
 		}
-	}
-	task runTest(type:Exec, dependsOn: installMainExecutable) {
-		workingDir "$buildDir/install/mainExecutable/lib"
-		commandLine "./$project.name"
-		environment LD_LIBRARY_PATH: "."
-	}
-	task build (dependsOn: runTest)
-}
-
-project(":palindrome") {
-	apply plugin: "cpp-lib"
-	task build (dependsOn: [mainSharedLibrary])
-}
-
-project(":palindrometest") {
-	apply plugin: "cpp-exe"
-	cpp {
-		sourceSets {
-			main {
-				libs << project(":palindrome").libraries.main
-				libs << project(":cppunit").libraries.main
-			}
+		task runTest(type:Exec, dependsOn: installMainExecutable) {
+			workingDir "$buildDir/install/mainExecutable/lib"
+			commandLine "./$project.name"
+			environment LD_LIBRARY_PATH: "."
 		}
+		task build (dependsOn: runTest)
 	}
-	task runTest(type:Exec, dependsOn: installMainExecutable) {
-		workingDir "$buildDir/install/mainExecutable/lib"
-		commandLine "./$project.name"
-		environment LD_LIBRARY_PATH: "."
-	}
-	task build (dependsOn: runTest)
 }
-
 
 evaluationDependsOnChildren()
 task clean (dependsOn: getTasksByName('clean', true))
