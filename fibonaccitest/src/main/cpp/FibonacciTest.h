@@ -16,6 +16,7 @@ CPPUNIT_TEST_SUITE( FibonacciTest );
 	CPPUNIT_TEST(testFibonacci4);
 CPPUNIT_TEST_SUITE_END();
 	std::auto_ptr<Fibonacci> sut;
+
 public:
 	FibonacciTest();
 	void testFibonacci0();
