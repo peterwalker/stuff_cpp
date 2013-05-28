@@ -11,7 +11,7 @@
 #include <map>
 class Fibonacci {
 private:
-	static std::map<int,int> cachedSequence;
+	static std::map<int, int> cachedSequence;
 	int calculateFib(int n);
 public:
 	Fibonacci();

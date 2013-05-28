@@ -7,27 +7,25 @@
 #include "../headers/Fibonacci.h"
 #include <iostream>
 
-std::map<int,int> Fibonacci::cachedSequence;
+std::map<int, int> Fibonacci::cachedSequence;
 
-Fibonacci::Fibonacci(){
-	cachedSequence[0]=0;
-	cachedSequence[1]=1;
+Fibonacci::Fibonacci() {
+	cachedSequence[0] = 0;
+	cachedSequence[1] = 1;
 }
 
 int Fibonacci::calculateFib(int n) {
-	std::map<int,int>::const_iterator it = cachedSequence.find(n);
-	if (it!=cachedSequence.end()){
+	std::map<int, int>::const_iterator it = cachedSequence.find(n);
+	if (it != cachedSequence.end()) {
 		return (*it).second;
 	}
-	std::cout << "***Fibonacci::calculateFib" << n << std::endl;
 	int value = (calculateFib(n - 2) + calculateFib(n - 1));
-	cachedSequence[n]=value;
+	cachedSequence[n] = value;
 	return value;
 }
 
 std::list<int> Fibonacci::sequence(int value) {
 	std::list<int> result;
-
 	for (int i = 0; i <= value; ++i) {
 		result.push_back(calculateFib(i));
 	}
