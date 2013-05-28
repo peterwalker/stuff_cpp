@@ -10,6 +10,7 @@ project(":cppunit") {
 	task build (dependsOn: [mainSharedLibrary])
 }
 
+configureProjectSet("fibonacci")
 configureProjectSet("fizzbuzz")
 configureProjectSet("palindrome")
 
