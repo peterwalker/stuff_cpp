@@ -37,6 +37,16 @@ def configureProjectSet(name){
 		task build (dependsOn: runTest)
 	}
 }
+/*
+project(":spike") {
+	apply plugin: "cpp-exe"
+	task runTest(type:Exec, dependsOn: installMainExecutable) {
+		workingDir "$buildDir/install/mainExecutable/lib"
+		commandLine "./$project.name"
+		environment LD_LIBRARY_PATH: "."
+	}
+	task build (dependsOn: runTest)
+}*/
 
 evaluationDependsOnChildren()
 task clean (dependsOn: getTasksByName('clean', true))
