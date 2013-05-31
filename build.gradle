@@ -1,9 +1,7 @@
 apply from: "$rootDir/gradle/wrapper.gradle"
 apply plugin: "eclipse"
 
-subprojects{
-	apply plugin: "eclipse-cdt"
-}
+subprojects{ apply plugin: "eclipse-cdt" }
 
 project(":cppunit") {
 	apply plugin: "cpp-lib"
@@ -19,10 +17,7 @@ def configureProjectSet(name){
 		apply plugin: "cpp-lib"
 		task build (dependsOn: [mainSharedLibrary])
 		libraries{
-			main{
-				//compilerArgs("-std=c++11")
-				compilerArgs("-std=c++0x")
-			}
+			main{ compilerArgs("-std=c++0x") }
 		}
 	}
 	project(":${name}test") {
@@ -35,6 +30,9 @@ def configureProjectSet(name){
 				}
 			}
 		}
+		executables{
+			main{ compilerArgs("-std=c++0x") }
+		}
 		task runTest(type:Exec, dependsOn: installMainExecutable) {
 			workingDir "$buildDir/install/mainExecutable/lib"
 			commandLine "./$project.name"
@@ -44,19 +42,19 @@ def configureProjectSet(name){
 	}
 }
 /*
-project(":spike") {
-	apply plugin: "cpp-exe"
-	task runTest(type:Exec, dependsOn: installMainExecutable) {
-		workingDir "$buildDir/install/mainExecutable/lib"
-		commandLine "./$project.name"
-		environment LD_LIBRARY_PATH: "."
-	}
-	task build (dependsOn: runTest)
-}*/
+ project(":spike") {
+ apply plugin: "cpp-exe"
+ task runTest(type:Exec, dependsOn: installMainExecutable) {
+ workingDir "$buildDir/install/mainExecutable/lib"
+ commandLine "./$project.name"
+ environment LD_LIBRARY_PATH: "."
+ }
+ task build (dependsOn: runTest)
+ }*/
 
 evaluationDependsOnChildren()
 task clean (dependsOn: getTasksByName('clean', true))
 task build (dependsOn: getTasksByName('build', true))
 build.mustRunAfter clean
-task cleanAndBuild(dependsOn: [clean,build])
+task cleanAndBuild(dependsOn: [clean, build])
 
