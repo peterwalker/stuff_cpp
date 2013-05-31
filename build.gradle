@@ -18,6 +18,11 @@ def configureProjectSet(name){
 	project(":$name") {
 		apply plugin: "cpp-lib"
 		task build (dependsOn: [mainSharedLibrary])
+		libraries{
+			main{
+				compilerArgs("-std=c++11")
+			}
+		}
 	}
 	project(":${name}test") {
 		apply plugin: "cpp-exe"
