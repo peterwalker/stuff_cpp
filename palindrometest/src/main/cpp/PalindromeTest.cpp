@@ -1,4 +1,3 @@
-#include <cppunit/config/SourcePrefix.h>
 #include "PalindromeTest.h"
 
 // Registers the fixture into the 'registry'
@@ -6,7 +5,7 @@ CPPUNIT_TEST_SUITE_REGISTRATION( PalindromeTest );
 
 PalindromeTest:: PalindromeTest()
 {
-	sut = std::auto_ptr<Palindrome>(new Palindrome());
+	sut = std::unique_ptr<Palindrome>(new Palindrome());
 }
 
 void 

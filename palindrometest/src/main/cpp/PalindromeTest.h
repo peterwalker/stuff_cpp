@@ -12,7 +12,7 @@ class PalindromeTest : public CPPUNIT_NS::TestFixture
   CPPUNIT_TEST_SUITE( PalindromeTest );
   CPPUNIT_TEST( testPalindrome );
   CPPUNIT_TEST_SUITE_END();
-  std::auto_ptr<Palindrome> sut;
+  std::unique_ptr<Palindrome> sut;
   public:
   PalindromeTest();
   void testPalindrome();
