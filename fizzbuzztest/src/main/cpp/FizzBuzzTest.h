@@ -12,7 +12,7 @@ class FizzBuzzTest : public CPPUNIT_NS::TestFixture
   CPPUNIT_TEST_SUITE( FizzBuzzTest );
   CPPUNIT_TEST( testFizzBuzz );
   CPPUNIT_TEST_SUITE_END();
-  std::auto_ptr<FizzBuzz> fb;
+  std::unique_ptr<FizzBuzz> fb;
   public:
   FizzBuzzTest();
   void testFizzBuzz();
