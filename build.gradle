@@ -20,7 +20,8 @@ def configureProjectSet(name){
 		task build (dependsOn: [mainSharedLibrary])
 		libraries{
 			main{
-				compilerArgs("-std=c++11")
+				//compilerArgs("-std=c++11")
+				compilerArgs("-std=c++0x")
 			}
 		}
 	}
