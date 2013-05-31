@@ -15,8 +15,8 @@ Fibonacci::Fibonacci() {
 }
 
 int Fibonacci::calculateFib(int n) {
-	std::map<int, int>::const_iterator it = cachedSequence.find(n);
-	//auto it = cachedSequence.find(n);
+	//std::map<int, int>::const_iterator it = cachedSequence.find(n);
+	auto it = cachedSequence.find(n);
 	if (it != cachedSequence.end()) {
 		return (*it).second;
 	}
