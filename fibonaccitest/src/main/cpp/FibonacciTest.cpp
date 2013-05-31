@@ -25,7 +25,7 @@ CPPUNIT_NS_END
 CPPUNIT_TEST_SUITE_REGISTRATION(FibonacciTest);
 
 FibonacciTest::FibonacciTest() {
-	sut = std::auto_ptr<Fibonacci>(new Fibonacci());
+	sut = std::unique_ptr<Fibonacci>(new Fibonacci());
 }
 
 void FibonacciTest::testFibonacci0() {

@@ -9,6 +9,7 @@
 #define FIBONACCI_H_
 #include <list>
 #include <map>
+
 class Fibonacci {
 private:
 	static std::map<int, int> cachedSequence;

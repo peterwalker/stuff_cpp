@@ -14,8 +14,8 @@ int main(int argc, char* argv[])
   runner.addTest( suite );
 
   // Change the default outputter to a compiler error format outputter
-//  runner.setOutputter( new CPPUNIT_NS::CompilerOutputter( &runner.result(),
-  //                                                        CPPUNIT_NS::stdCOut() ) );
+  runner.setOutputter( new CPPUNIT_NS::CompilerOutputter( &runner.result(),
+                                                          CPPUNIT_NS::stdCOut() ) );
   // Run the test.
   bool wasSucessful = runner.run();
 
